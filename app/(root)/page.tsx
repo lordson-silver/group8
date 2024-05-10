@@ -20,7 +20,7 @@ export default function Home() {
         <p className="text-white text-sm">Connect with experienced mentors in your field, gain valuable insights, and explore exciting opportunities.</p>
           <Button
             borderRadius=".75rem"
-            className="bg-primary text-md text-white"
+            className="bg-primary text-md text-white z-10 "
           >
             Join Now
           </Button>
