@@ -13,7 +13,7 @@ export default function Home() {
 
 
 
-        <RadialGradientSVG className="w-full" />
+        <RadialGradientSVG className="w-[150%] md:w-full" />
     </div>
   );
 }
