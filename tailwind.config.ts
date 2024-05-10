@@ -36,6 +36,7 @@ module.exports = {
         ring: "hsl(var(--ring))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
+        gradient: "linear-gradient(90.58deg, #3A30DD 0%, #7C30DD 26%, #FE3876 100%)",
         primary: {
           DEFAULT: "#7C30DD",
           foreground: "hsl(var(--primary-foreground))",

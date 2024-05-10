@@ -3,36 +3,23 @@ import { RadialGradientSVG } from "@/components/ui/radialGradient";
 
 export default function Home() {
   return (
-    <div className="h-full w-full bg-black bg-grid-white  relative flex items-center justify-center overflow-hidden">
-        <Button
-          borderRadius=".75rem"
-          className="bg-primary text-md text-white"
-        >
-          Join Now
-        </Button>
+    <div className="h-full w-full bg-black bg-grid-white  relative flex flex-col items-center justify-center overflow-hidden">
+      <div className="max-w-md md:max-w-[530px] w-full flex flex-col gap-5 items-center text-center justify-center">
+
+        <p className="text-4xl md:text-6xl bg-gradient text-white ">Empowering Students through Mentorship</p>
+        <p className="text-white text-sm">Connect with experienced mentors in your field, gain valuable insights, and explore exciting opportunities.</p>
+          <Button
+            borderRadius=".75rem"
+            className="bg-primary text-md text-white"
+          >
+            Join Now
+          </Button>
 
 
 
-        <RadialGradientSVG className="w-[150%] md:w-full" />
+          <RadialGradientSVG className="w-[150%] md:w-full" />
+      </div>
     </div>
   );
 }
 
-const Icon = () => {
-  return (
-    <svg
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke-width="1.5"
-      stroke="currentColor"
-      className="h-4 w-4 text-white stroke-2"
-    >
-      <path
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-      />
-    </svg>
-  );
-};
