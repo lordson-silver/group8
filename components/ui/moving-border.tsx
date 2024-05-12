@@ -10,6 +10,12 @@ import {
 import { useRef } from "react";
 import { cn } from "@/lib/utils";
 
+/**
+ * Learn more about the moving border component from the doc below👇🏿
+ * https://ui.aceternity.com/components/moving-border
+*/
+
+
 export function Button({
   borderRadius = "1.75rem",
   children,
@@ -32,7 +38,7 @@ export function Button({
   return (
     <Component
       className={cn(
-        "bg-transparent relative text-xl h-14 w-36 p-[1px] overflow-hidden ",
+        "bg-transparent relative text-xl h-16 w-40 p-[1px] overflow-hidden ",
         containerClassName
       )}
       style={{

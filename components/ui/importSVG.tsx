@@ -1,5 +1,28 @@
 import {cn} from '@/lib/utils';
 
+export function ArrowSVG ({
+    className
+}: {
+    className?:string;
+}) {
+  return (
+  <svg
+    className={cn(className)}
+    width="19"
+    height="11"
+    viewBox="0 0 19 11"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M12.9268 0.429916C12.9268 0.986416 13.4766 1.81742 14.0331 2.51492C14.7486 3.41492 15.6036 4.20017 16.5838 4.79942C17.3188 5.24867 18.2098 5.67992 18.9268 5.67992M18.9268 5.67992C18.2098 5.67992 17.3181 6.11117 16.5838 6.56042C15.6036 7.16042 14.7486 7.94567 14.0331 8.84417C13.4766 9.54242 12.9268 10.3749 12.9268 10.9299M18.9268 5.67992L0.926811 5.67992"
+      stroke="white"
+    />
+  </svg>
+  );
+};
+
+
 export function StarSVG ({
     className
    }: {
