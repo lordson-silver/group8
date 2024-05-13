@@ -17,7 +17,7 @@ export default function RootLayout({
       <div className="relative flex flex-row min-h-screen">
 
         {/* left */}
-        <div className="w-full min-h-screen sm:flex flex-col sm:w-[60%]">
+        <div className="w-full min-h-screen flex flex-col sm:w-[60%]">
           <AuthNav 
             className="min-w-full border-b pb-2 border-[#DFDFE5]"
             navText={`${pathname === '/signin' ? 'Sign Up' : pathname === '/signup' ? 'Sign In' : ''}`}
