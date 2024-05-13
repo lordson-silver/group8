@@ -7,7 +7,7 @@ export function RadialGradientSVG ({
 }) {
   return (
     <svg
-      className={cn(className, "absolute bottom-0 -left-23 md:left-0 transform translate-y-1/3 md:translate-y-1/2 z-0")}
+      className={cn(className, "absolute bottom-0 transform translate-y-1/3 md:translate-y-1/2 z-0")}
       width="100%"
       viewBox="0 0 2309 1526"
       fill="none"
