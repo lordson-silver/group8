@@ -2,6 +2,7 @@
 
 import { AuthNav } from "@/components/nav";
 import { RadialGradientSVG } from "@/components/ui/radialGradient";
+import { Toaster } from "@/components/ui/toaster";
 import { usePathname } from "next/navigation";
 
 export default function RootLayout({
@@ -26,6 +27,7 @@ export default function RootLayout({
           <main className="flex flex-grow justify-center items-center">
             {children}
           </main>
+          <Toaster />
         </div>
 
         {/* right */}
