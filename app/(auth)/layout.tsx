@@ -14,7 +14,7 @@ export default function RootLayout({
 
   return (
     
-      <div className="relative flex flex-row min-h-screen">
+      <div className="relative flex flex-row">
 
         {/* left */}
         <div className="w-full min-h-screen flex flex-col sm:w-[60%]">
