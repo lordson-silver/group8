@@ -3,7 +3,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
-
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -20,13 +20,13 @@ import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 
 const FormSchema = z.object({
-  email: z.string().email(),
-  password: z.string().min(8, {
-    message: 'password must be a minimum of 8 characters',
+  verifyCode: z.string().min(6, {
+    message: 'The OTP must be 6 characters',
   }),
 });
 
-const SignIn = () => {
+const StepTwo = () => {
+  const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
@@ -39,52 +39,42 @@ const SignIn = () => {
         </pre>
       ),
     });
+    router.push('/signup/step_three');
   }
   return (
     <div className="font-jakarta  max-w-md w-full mx-auto flex flex-col justify-center gap-2">
       <div className="description leading-7">
-        <h2 className="font-medium text-2xl">Sign In</h2>
-        <p>Sign in to get access to your purchased course</p>
+        <h2 className="font-medium text-2xl">Verify Email</h2>
+        <p>
+          A six digit code has been sent to your email, please enter the code
+          below
+        </p>
       </div>
       <Form {...form}>
         <div className="flex mt-3 flex-col justify-center">
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
             <FormField
               control={form.control}
-              name="email"
+              name="verifyCode"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[16px]  font-medium ">
-                    Email
+                    Verification Code
                   </FormLabel>
                   <FormMessage />
                   <FormControl>
                     <Input
                       {...field}
-                      placeholder="Email address"
+                      placeholder="Enter 6 digit code"
                       className="py-[20px] px-[16px] outline-none border-[#DCDCDF] focus:border-[#DCDCDF] background-white"
                     />
                   </FormControl>
                 </FormItem>
               )}
             />
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel className="text-[16px]  font-medium ">
-                    Password
-                  </FormLabel>
-                  <FormMessage />
-                  <FormControl>
-                    <Input {...field} placeholder="password" type="password" />
-                  </FormControl>
-                </FormItem>
-              )}
-            />
+
             <Button type="submit" className="w-full rounded-[15px] ">
-              Log In
+              Continue
             </Button>
           </form>
         </div>
@@ -93,4 +83,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default StepTwo;
