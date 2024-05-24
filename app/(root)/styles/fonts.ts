@@ -4,8 +4,14 @@
  * Neue Machina is an imported font.
  */
 
-import localFont from "next/font/local"
+import localFont from 'next/font/local';
+import { Plus_Jakarta_Sans } from 'next/font/google';
 
-const neue = localFont({ src: './PPNeueMachina-PlainRegular.otf'}) 
+const plusJakartaSans = Plus_Jakarta_Sans({
+  weight: ['400', '700'], // Specify the weights you need
+  subsets: ['latin'], // Specify the subsets you need
+});
 
-export { neue }
+const neue = localFont({ src: './PPNeueMachina-PlainRegular.otf' });
+
+export { neue, plusJakartaSans };
