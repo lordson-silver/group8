@@ -2,7 +2,7 @@
 
 ### Group Members:
 
-[Lordson](https://github.com/lordson-silver) | [Michael]() | Daniel | Jerry | Tesimi | Godsgift
+[Lordson](https://github.com/lordson-silver) | [Michael]() | Daniel | Jerry | Tesimi | Godsgift and more..
 
 ---
 
@@ -14,16 +14,26 @@ This project is deployed on Vercel [`Click Here To Visit Project`](https://group
 
 ## Getting Started
 
-First, run the development server:
+First, clone this repository:
+
+```bash
+git clone https://github.com/lordson-silver/group8.git
+```
+
+Next, install all dependencies:
+
+```bash
+npm i
+
+# or
+
+npm install
+```
+
+Finally, to launch the project:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
