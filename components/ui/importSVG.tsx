@@ -44,3 +44,48 @@ export function StarSVG ({
     </svg>
   );
 };
+
+
+export function LogoutIcon({
+    className
+  }: {
+    className?: string;
+  }) {
+    return (
+      <svg
+        className={cn(className)}
+        width="24"
+        height="25"
+        viewBox="0 0 20 21"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <g clipPath="url(#clip0_208_9)">
+          <path
+            opacity="0.5"
+            d="M7.15283 6.29826C7.16233 4.48576 7.23912 3.50409 7.84712 2.86409C8.543 2.13159 9.66242 2.13159 11.9012 2.13159H12.6929C14.9325 2.13159 16.052 2.13159 16.7478 2.86409C17.4429 3.59576 17.4429 4.77493 17.4429 7.13159V13.7983C17.4429 16.1549 17.4429 17.3341 16.7478 18.0658C16.0512 18.7983 14.9325 18.7983 12.6929 18.7983H11.9012C9.66242 18.7983 8.543 18.7983 7.84712 18.0658C7.23912 17.4258 7.16233 16.4441 7.15283 14.6316"
+            stroke="white"
+            strokeWidth="1.46015"
+            strokeLinecap="round"
+          />
+          <path
+            d="M11.9013 10.4648H1.60962M1.60962 10.4648L4.38045 7.96484M1.60962 10.4648L4.38045 12.9648"
+            stroke="white"
+            strokeWidth="1.46015"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </g>
+        <defs>
+          <clipPath id="clip0_208_9">
+            <rect
+              width="19"
+              height="20"
+              fill="white"
+              transform="translate(0.0262451 0.465088)"
+            />
+          </clipPath>
+        </defs>
+      </svg>
+    );
+  }

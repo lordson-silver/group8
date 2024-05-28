@@ -30,7 +30,7 @@ export default function Home() {
           Connect with experienced mentors in your field, gain valuable insights, and explore exciting opportunities.
         </p>
 
-        <Link href="/signup">
+        <Link href="/signup/step_one">
           <Button
             borderRadius=".75rem"
             className="bg-primary flex gap-2 text-md text-white z-10"

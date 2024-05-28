@@ -21,14 +21,14 @@ export default function RootLayout({
           navText={`${
             pathname === '/signin'
               ? 'Sign Up'
-              : pathname.includes('/signup')
+              : pathname.includes('/signup/step_one')
               ? 'Sign In'
               : ''
           }`}
           href={
             pathname === '/signin'
-              ? '/signup'
-              : pathname.includes('/signup')
+              ? '/signup/step_one'
+              : pathname.includes('/signup/step_one')
               ? '/signin'
               : ''
           }
