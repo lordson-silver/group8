@@ -83,7 +83,7 @@ const StepThree = () => {
             <Button className="gap-1 it" onClick={handleButtonClick}>
               Upload <Upload />
             </Button>
-            <input
+            <Input
               id="picture"
               type="file"
               ref={fileInputRef}

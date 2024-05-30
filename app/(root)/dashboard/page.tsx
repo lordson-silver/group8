@@ -6,11 +6,23 @@ import { RadialGradientSVG } from "@/components/ui/radialGradient";
 
 // --------- Website Componenet ---------
 import { Nav } from "@/components/nav";
+import { Input } from "@/components/ui/input";
+import Search from "@/components/ui/search";
 
 // -------- NextJS Imports ---------
 // import Link from "next/link";
 
-export default function Dashboard() {
+export default async function Dashboard({
+    searchParams,
+  }: {
+    searchParams?: {
+      query?: string;
+      page?: string;
+    };
+  }) {
+    const query = searchParams?.query || '';
+    const currentPage = Number(searchParams?.page) || 1;
+
   return (
     <div className="container bg-black bg-grid-white ">
       <Nav />
@@ -19,6 +31,9 @@ export default function Dashboard() {
         <div className="flex flex-col">
             <h1 className="text_gradient text-[80px] leading-none">Search for Mentors</h1>
             <p className="text-accent text-sm">Enter the name of a mentor you want to search for</p>
+            <div className="flex">
+              <Search placeholder="search"/>
+            </div>
         </div>
        
 
