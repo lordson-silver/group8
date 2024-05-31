@@ -11,7 +11,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
     const searchParams = useSearchParams();
     const pathname = usePathname();
-    const { replace } = useRouter();
+    const { replace, push } = useRouter();
     const InputRef = useRef<HTMLInputElement>(null);
 
     function handleSearch(term: string) {
@@ -25,6 +25,11 @@ export default function Search({ placeholder }: { placeholder: string }) {
             params.delete('query');
           }
         replace(`${pathname}?${params.toString()}`);
+    }
+
+    function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+      event.preventDefault();
+      push('/chat');
     }
  
   return (
@@ -53,7 +58,9 @@ export default function Search({ placeholder }: { placeholder: string }) {
 
 
 
-    <form className="mx-auto flex flex-1 z-50 sm:flex-initial justify-center w-full mt-6">
+    <form className="mx-auto flex flex-1 z-50 sm:flex-initial justify-center w-full mt-6"
+    onSubmit={handleSubmit}
+    >
     <div className="relative">
       {/* <Label htmlFor="search" className="sr-only">
         Search
@@ -68,7 +75,7 @@ export default function Search({ placeholder }: { placeholder: string }) {
         onChange={(e) => {
           handleSearch(e.target.value);
         }}
-        defaultValue={searchParams.get('query')?.toString()}
+        defaultValue={searchParams.get('query')?.toString() || ''}
       />
       <FaMagnifyingGlass className="absolute right-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
       {/* <MagnifyingGlassIcon  /> */}

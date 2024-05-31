@@ -12,9 +12,9 @@ const TabBarItem = ({ src, active }: { src: string; active?: boolean; }) => (
 const TabBar = () => (
   <div className="bg-black text-white border-gray-100/15 border-r w-max h-screen p-1 pt-4 flex flex-col">
     <div className="flex-grow">
-      <TabBarItem src="./image2.png" active />
-      <TabBarItem src="./image1.png" />
-      <TabBarItem src="./image3.png" />
+      <TabBarItem src="./image4.jpg" active />
+      {/* <TabBarItem src="./image1.png" />
+      <TabBarItem src="./image3.png" /> */}
     </div>
   </div>
 );
