@@ -5,10 +5,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 
 import Image from 'next/image';
 import Link from 'next/link';
+import ProfileCard from './ProfileCard';
 
 export function Nav({ className }: { className?: string }) {
 
-  const signedIn = true
+  const signedIn: boolean = true;
   return (
     <div
       className={cn(
@@ -26,19 +27,8 @@ export function Nav({ className }: { className?: string }) {
         />
       </Link>
       <div className="flex flex-grow gap-2 md:gap-4 justify-end">
-        {signedIn == true ? 
-        <div className='border-[#2E2E2E] border rounded-[15px] bg-[#1F1F1F] flex gap-3 items-center p-[10px]'>
-            <Avatar>
-              <AvatarImage src="./image.png" />
-            </Avatar>
-
-          
-            <div className="flex flex-col justify-center sm:min-w-32">
-              <p className="text-[12px] text-white">Daniel Grayson</p>
-              <p className=" text-[10px] text-[#6D6D6D]">daniel@gmail.com</p>
-            </div>
-          <LogoutIcon />         
-        </div>
+        {signedIn === true as boolean ? 
+        <ProfileCard />
         : <><Link href="/signin">
           <Button variant="outline" className="text-white" size="sm">
             Sign In
