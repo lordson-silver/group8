@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-
+import React, { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import Upload from '@/components/ui/upload';
@@ -58,6 +58,11 @@ const StepThree = () => {
     router.push('/signup/step_four');
   }
 
+  const fileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleButtonClick = () => {
+    fileInputRef.current?.click();
+  };
   return (
     <Form {...form}>
       <div className="flex p-3 flex-col justify-center font-jakarta">
@@ -75,10 +80,25 @@ const StepThree = () => {
                 Please upload a profile picture for identification
               </FormDescription>
             </div>
-            <Button className="gap-1 it">
+            <Button className="gap-1 it" onClick={handleButtonClick}>
               Upload <Upload />
             </Button>
+            <Input
+              id="picture"
+              type="file"
+              ref={fileInputRef}
+              style={{ display: 'none' }}
+            />
           </div>
+          {/* <div>
+              <FormLabel htmlFor="picture" className="text-[16px]  font-medium  leading-5">
+                Profile Picture
+              </FormLabel>
+              <FormDescription className="">
+                Please upload a profile picture for identification
+              </FormDescription>
+            <Input id="picture" type="file" />
+            </div> */}
           <FormField
             control={form.control}
             name="career"

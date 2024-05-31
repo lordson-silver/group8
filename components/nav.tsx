@@ -1,9 +1,15 @@
 import { Button } from './ui/button';
 import { cn } from '@/lib/utils';
+import { LogoutIcon } from '@/components/ui/importSVG';
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+
 import Image from 'next/image';
 import Link from 'next/link';
+import ProfileCard from './ProfileCard';
 
 export function Nav({ className }: { className?: string }) {
+
+  const signedIn: boolean = true;
   return (
     <div
       className={cn(
@@ -21,14 +27,17 @@ export function Nav({ className }: { className?: string }) {
         />
       </Link>
       <div className="flex flex-grow gap-2 md:gap-4 justify-end">
-        <Link href="/signin">
+        {signedIn === true as boolean ? 
+        <ProfileCard />
+        : <><Link href="/signin">
           <Button variant="outline" className="text-white" size="sm">
             Sign In
           </Button>
         </Link>
         <Link href="/signup/step_one">
           <Button size="sm">Sign Up</Button>
-        </Link>
+        </Link></>
+        }
       </div>
     </div>
   );
