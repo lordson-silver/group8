@@ -4,6 +4,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { useRouter } from 'next/navigation';
+import { useAuth } from '@/context/AuthProvider';
 import { Button } from '@/components/ui/button';
 import {
   Form,
@@ -26,20 +27,33 @@ const FormSchema = z.object({
 });
 
 const StepTwo = () => {
+  //@ts-ignore
+  const { verifyOtp }: { verifyOtp: any } = useAuth();
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-    router.push('/signup/step_three');
+    async () => {
+      try {
+        const verifyData = await verifyOtp(data);
+        if (verifyData) {
+          router.push('/signup/step_three');
+        }
+      } catch (error) {
+        toast({
+          title: 'You submitted the following values:',
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(error, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+        // Handle error appropriately, e.g., show an error message
+      }
+    };
   }
   return (
     <div className="font-jakarta  max-w-md w-full mx-auto flex flex-col justify-center gap-2">

@@ -3,7 +3,7 @@
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-
+import { useAuth } from '@/context/AuthProvider';
 import {
   Form,
   FormControl,
@@ -21,6 +21,13 @@ import { useRouter } from 'next/navigation';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
 
 const FormSchema = z.object({
   firstName: z.string().min(2, {
@@ -33,30 +40,44 @@ const FormSchema = z.object({
   password: z.string().min(8, {
     message: 'Password must be  8 characters',
   }),
+  status: z.string({
+    required_error: 'Please Select a Role.',
+  }),
 });
 
 const StepOne = () => {
+  //@ts-ignore
+  const { signup }: { signup: any } = useAuth();
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    toast({
-      title: 'You submitted the following values:',
-      description: (
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(data, null, 2)}</code>
-        </pre>
-      ),
-    });
-    console.log('move');
-    router.push('/signup/step_two');
+    async () => {
+      console.log('test');
+      try {
+        const userData = await signup(data);
+        console.log('user:', userData);
+        router.push('/signup/step_two');
+      } catch (error) {
+        toast({
+          title: 'You submitted the following values:',
+          description: (
+            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+              <code className="text-white">
+                {JSON.stringify(error, null, 2)}
+              </code>
+            </pre>
+          ),
+        });
+      }
+    };
   }
 
   return (
     <Form {...form}>
-      <div className="flex p-3 flex-col justify-center font-jakarta">
+      <div className="flex p-3 flex-col justify-center">
         <FormLabel className="text-3xl">Create an Account</FormLabel>
         <FormDescription className="pb-4">
           Provide your basic information and password to create an account{' '}
@@ -161,6 +182,37 @@ const StepOne = () => {
                       placeholder="Minimum 8 characters"
                     />
                   </FormControl>
+                </div>
+              </FormItem>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="status"
+            render={({ field }) => (
+              <FormItem>
+                <div className="grid gap-2">
+                  <FormLabel
+                    htmlFor="status"
+                    className="text-[16px]  font-medium "
+                  >
+                    Are you a Lecturer or Student
+                  </FormLabel>
+                  <Select
+                    onValueChange={field.onChange}
+                    defaultValue={field.value}
+                  >
+                    <FormControl>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Select Role" />
+                      </SelectTrigger>
+                    </FormControl>
+                    <SelectContent>
+                      <SelectItem value="lecturer">Lecturer</SelectItem>
+                      <SelectItem value="student">Student</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <FormMessage />
                 </div>
               </FormItem>
             )}
