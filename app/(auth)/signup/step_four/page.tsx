@@ -27,7 +27,7 @@ const StepFour = () => {
 
   return (
     <div>
-      <div className="flex p-3 flex-col justify-center font-jakarta">
+      <div className="flex p-3 flex-col justify-center">
         <h2 className="text-3xl  font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 mb-4">
           Sign Up Successful
         </h2>
@@ -35,7 +35,9 @@ const StepFour = () => {
           Your account has been successfully been created. Proceed to Sign in
         </p>
 
-        <Button className="w-full">Continue</Button>
+        <Button className="w-full" onClick={() => router.push('/dashboard')}>
+          Continue
+        </Button>
       </div>
     </div>
   );
