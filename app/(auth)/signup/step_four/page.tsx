@@ -35,7 +35,9 @@ const StepFour = () => {
           Your account has been successfully been created. Proceed to Sign in
         </p>
 
-        <Button className="w-full">Continue</Button>
+        <Button className="w-full" onClick={() => router.push('/dashboard')}>
+          Continue
+        </Button>
       </div>
     </div>
   );

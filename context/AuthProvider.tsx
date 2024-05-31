@@ -11,13 +11,18 @@ import { useRouter } from 'next/navigation';
 import local from 'next/font/local';
 
 const BASE_URL = 'https://smmp-backend.onrender.com/api/v1/users';
-const AuthContext = createContext({});
+export const AuthContext = createContext({});
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState({});
   const [otp, setOtp] = useState('');
   const router = useRouter();
 
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user') as string).data;
+    setUser(user);
+    console.log('User Data:', user);
+  }, []);
   const signup = async (payload: any) => {
     const response = await axios.post(`${BASE_URL}/signup`, payload);
     const { data, status } = response;
@@ -45,6 +50,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
   };
   const updateProfile = async (payload: any) => {
     const { token } = JSON.parse(localStorage.getItem('user') as string).token;
+
     const response = await axios.patch(
       `${BASE_URL}/academic-profile`,
       payload,

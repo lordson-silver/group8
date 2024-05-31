@@ -54,7 +54,7 @@ const StepOne = () => {
   });
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    async () => {
+    (async () => {
       console.log('test');
       try {
         const userData = await signup(data);
@@ -72,7 +72,7 @@ const StepOne = () => {
           ),
         });
       }
-    };
+    })();
   }
 
   return (

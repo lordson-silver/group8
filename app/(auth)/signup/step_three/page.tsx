@@ -33,7 +33,7 @@ import { useForm } from 'react-hook-form';
 import { UploadSVG } from '@/components/ui/importSVG';
 
 const FormSchema = z.object({
-  image: z.any(),
+  image: typeof window === 'undefined' ? z.any() : z.instanceof(FileList),
   career: z.string(),
   course: z.string({
     required_error: 'Please select a course of study.',
@@ -47,29 +47,30 @@ const StepThree = () => {
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
+  const fileRef = form.register('image');
 
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    async () => {
+    (async () => {
       try {
+        console.log(data);
         const userData = await updateProfile(data);
         router.push('/signup/step_four');
       } catch (error) {
         toast({
           title: 'You submitted the following values:',
           description: (
-            <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+            <pre className="mt-2 rounded-md bg-slate-950 p-4">
               <code className="text-white">
                 {JSON.stringify(error, null, 2)}
               </code>
             </pre>
           ),
         });
+
         // Handle error appropriately, e.g., show an error message
       }
-    };
+    })();
   }
-
-  const fileInputRef = useRef<HTMLInputElement>(null);
 
   // const handleButtonClick = () => {
   //   fileInputRef.current?.click();
@@ -100,7 +101,7 @@ const StepThree = () => {
                 </div>
                 <FormMessage />
                 <FormControl>
-                  <Input {...field} id="image" type="file" ref={fileInputRef} />
+                  <Input type="file" {...fileRef} />
                 </FormControl>
               </FormItem>
             )}

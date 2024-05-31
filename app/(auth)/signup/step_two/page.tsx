@@ -21,22 +21,22 @@ import { toast } from '@/components/ui/use-toast';
 import Link from 'next/link';
 
 const FormSchema = z.object({
-  verifyCode: z.string().min(6, {
+  otp: z.string().min(6, {
     message: 'The OTP must be 6 characters',
   }),
 });
 
 const StepTwo = () => {
   //@ts-ignore
-  const { verifyOtp }: { verifyOtp: any } = useAuth();
+  const { verifyOtp, user }: { verifyOtp: any; user: any } = useAuth();
   const router = useRouter();
   const form = useForm<z.infer<typeof FormSchema>>({
     resolver: zodResolver(FormSchema),
   });
   function onSubmit(data: z.infer<typeof FormSchema>) {
-    async () => {
+    (async () => {
       try {
-        const verifyData = await verifyOtp(data);
+        const verifyData = await verifyOtp({ ...data, email: user.email });
         if (verifyData) {
           router.push('/signup/step_three');
         }
@@ -53,7 +53,7 @@ const StepTwo = () => {
         });
         // Handle error appropriately, e.g., show an error message
       }
-    };
+    })();
   }
   return (
     <div className="font-jakarta  max-w-md w-full mx-auto flex flex-col justify-center gap-2">
@@ -69,7 +69,7 @@ const StepTwo = () => {
           <form onSubmit={form.handleSubmit(onSubmit)} className="grid gap-4">
             <FormField
               control={form.control}
-              name="verifyCode"
+              name="otp"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel className="text-[16px]  font-medium ">
