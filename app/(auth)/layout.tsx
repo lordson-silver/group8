@@ -27,7 +27,7 @@ export default function RootLayout({
           }`}
           href={
             pathname === '/signin'
-              ? '/signup'
+              ? '/signup/step_one'
               : pathname.includes('/signup')
               ? '/signin'
               : ''

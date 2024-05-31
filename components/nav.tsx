@@ -26,7 +26,7 @@ export function Nav({ className }: { className?: string }) {
             Sign In
           </Button>
         </Link>
-        <Link href="/signup">
+        <Link href="/signup/step_one">
           <Button size="sm">Sign Up</Button>
         </Link>
       </div>

@@ -1,14 +1,14 @@
-import { Button } from "@/components/ui/moving-border";
+import { Button } from '@/components/ui/moving-border';
 
 // -------- Giants Components ---------
-import { RadialGradientSVG } from "@/components/ui/radialGradient";
-import { StarSVG, ArrowSVG } from "@/components/ui/importSVG";
+import { RadialGradientSVG } from '@/components/ui/radialGradient';
+import { StarSVG, ArrowSVG } from '@/components/ui/importSVG';
 
 // --------- Website Componenet ---------
-import { Nav } from "@/components/nav";
+import { Nav } from '@/components/nav';
 
 // -------- NextJS Imports ---------
-import Link from "next/link";
+import Link from 'next/link';
 
 export default function Home() {
   return (
@@ -27,16 +27,17 @@ export default function Home() {
           Empowering Students through Mentorship
         </h1>
         <p className="text-white text-sm mb-6">
-          Connect with experienced mentors in your field, gain valuable insights, and explore exciting opportunities.
+          Connect with experienced mentors in your field, gain valuable
+          insights, and explore exciting opportunities.
         </p>
 
-        <Link href="/signup">
+        <Link href="/signup/step_one">
           <Button
             borderRadius=".75rem"
             className="bg-primary flex gap-2 text-md text-white z-10"
           >
             Join Now
-            <ArrowSVG/>
+            <ArrowSVG />
           </Button>
         </Link>
 
@@ -45,4 +46,3 @@ export default function Home() {
     </div>
   );
 }
-
