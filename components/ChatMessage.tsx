@@ -1,12 +1,6 @@
 import React from 'react';
-import { Avatar, AvatarImage } from './ui/avatar';
-
-interface ChatMessageProps {
-  sender: string;
-  message: string;
-  timestamp: string;
-  src: string;
-}
+import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { ChatMessageProps } from '@/types';
 
 const ChatMessage: React.FC<ChatMessageProps> = ({ sender, message, timestamp, src }) => (
   <div className="flex gap-2 items-center w-full mb-4">

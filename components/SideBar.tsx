@@ -30,7 +30,7 @@ const SideBar = () => (
       </div>
     </div>
     <div className="flex-grow p-2">
-        <SidebarItem name="Dr. B. B. Baridam" src='./image2.png' />
+        <SidebarItem name="Prof. George Owunari" src='./image4.jpg' />
         <SidebarItem name="Daniel Grayson" src='./image.png' />
         <div className="flex items-center gap-2 mb-4 cursor-pointer">
             <BookmarkIcon className='bg-[#232323]' />
