@@ -41,7 +41,7 @@ const SignIn = () => {
     });
   }
   return (
-    <div className="font-jakarta  max-w-md w-full mx-auto flex flex-col justify-center gap-2">
+    <div className="max-w-md w-full mx-auto flex flex-col justify-center gap-2">
       <div className="description leading-7">
         <h2 className="font-medium text-2xl">Sign In</h2>
         <p>Sign in to get access to your purchased course</p>

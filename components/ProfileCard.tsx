@@ -1,6 +1,7 @@
 import React from 'react'
 import { Avatar, AvatarImage } from './ui/avatar'
 import { LogoutIcon } from './ui/importSVG'
+import Link from 'next/link'
 
 const ProfileCard = () => {
   return (
@@ -14,7 +15,9 @@ const ProfileCard = () => {
               <p className="text-[12px] text-white">Daniel Grayson</p>
               <p className=" text-[10px] text-[#6D6D6D]">daniel@gmail.com</p>
             </div>
-          <LogoutIcon />         
+            <Link href='/signin'>
+              <LogoutIcon />         
+            </Link>
         </div>
   )
 }
